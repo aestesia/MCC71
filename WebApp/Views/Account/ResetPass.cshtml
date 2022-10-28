@@ -1,0 +1,30 @@
+﻿@model WebApp.Models.Employee
+@{
+    ViewData["Title"] = "ResetPass";
+}
+<h1>ResetPass</h1>
+@*<form method="post" asp-action="ResetPass">
+    <input type="hidden" asp-for="Email"></input>
+    <input name="newPass" type="password" />
+    <input name="confirmPass" type="password" />
+    <button type="submit">Submit</button>
+</form>*@
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="ResetPass">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Email" />
+            <div class="form-group">
+                <input name="newPass" type="password" />
+            </div>
+            <div class="form-group">
+                <input name="confirmPass" type="password" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

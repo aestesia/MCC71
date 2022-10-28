@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "ChangePass";
+}
+
+<h1>ChangePass</h1>
+<form method="post" asp-action="ChangePass">
+    <input name="email" type="text" />
+    <input name="currPass" type="password" />
+    <input name="newPass" type="password" />
+    <input name="confirmPass" type="password" />
+    <button type="submit">Submit</button>
+</form>
