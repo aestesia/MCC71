@@ -105,13 +105,13 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangePass(string email, string currPass, string newPass, string confirmPass)
+        public IActionResult ChangePass(string email, string currentPass, string newPass, string confirmPass)
         {
             if (confirmPass == newPass)
             {
                 var data = myContext.Users
                 .Include(x => x.Employee)
-                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.password.Equals(currPass));
+                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.password.Equals(currentPass));
                 if (data != null)
                 {
                     data.password = newPass;
@@ -134,10 +134,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult ForgotPass(string email)
         {
-            var data = myContext.Users
-                .Include(x => x.Employee)
-                .SingleOrDefault(x => x.Employee.Email.Equals(email));
-            Employee employeeEmail = new Employee() { Email = data.Employee.Email };
+            var data = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email));
+
+            Employee employeeEmail = new Employee() { Email = data.Email };
             if (data != null) 
                 return RedirectToAction("ResetPass", "Account", employeeEmail);            
             
