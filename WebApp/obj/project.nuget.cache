@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "alSBSza6T49VIgpurXlRr8Vpp55gnCEdtmK8+ORa8KahmtSia/UY99XAcIDp7g5Ecdv6ampgC3hHlWgS/PQbPA==",
+  "dgSpecHash": "Gfw9o/X//+syvMEiVpJNbJWbSje7JLqgRNWL3Vb1CZPe5KV9fRnqDrfOZHixOLdRAOKw0KNQgrWAHxloJK6MtA==",
   "success": true,
   "projectFilePath": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\timot\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\timot\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\timot\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\timot\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",

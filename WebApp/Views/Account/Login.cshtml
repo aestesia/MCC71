@@ -5,11 +5,20 @@
 
 <h1>Login</h1>
 <form metohd="post" asp-action="Login">
+    <div>
+    <label>Email</label>
     <input name="email" type="text" />
+    </div>
+    <div>
+    <label>Password</label>
     <input name="password" type="password" />
     <button type="submit">Login</button>
+    </div>
 </form>
 
 <div>
     <a asp-action="ForgotPass">Forgot Password</a>
+</div>
+<div>
+    <a asp-action="Register">Create Account</a>
 </div>

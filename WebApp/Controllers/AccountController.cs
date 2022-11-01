@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
 using WebApp.Context;
+using WebApp.Handlers;
 using WebApp.Models;
 using WebApp.ViewModels;
 
@@ -50,16 +51,17 @@ namespace WebApp.Controllers
             var data = myContext.Users
                 .Include(x => x.Employee)
                 .Include(x => x.Role)
-                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.password.Equals(password));
-            ResponseLogin responseLogin = new ResponseLogin()
-            {
-                FullName = data.Employee.FullName,
-                Email = data.Employee.Email,
-                Role = data.Role.Name
-            };
-            if (data != null) 
-                return RedirectToAction("Index", "Home", responseLogin);
-            
+                .SingleOrDefault(x => x.Employee.Email.Equals(email));
+            var validate = Hashing.ValidatePassword(password, data.password);
+
+            if (data != null && validate)
+            {                
+                HttpContext.Session.SetInt32("Id", data.Id);
+                HttpContext.Session.SetString("Fullname", data.Employee.FullName);
+                HttpContext.Session.SetString("Email", data.Employee.Email);
+                HttpContext.Session.SetString("Role", data.Role.Name);
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -72,27 +74,30 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Register(string fullname, string email, DateTime birthDate, string password)
         {
-            Employee employee = new Employee()
-            {
-                FullName = fullname,
-                Email = email,
-                BirthDate = birthDate
-            };
-            myContext.Employees.Add(employee);
-            var result = myContext.SaveChanges();
-            if (result > 0) 
-            {
-                var id = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email)).Id;
-                User user = new User()
+            var checkEmail = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email)).Email;
+            if (checkEmail == null) {
+                Employee employee = new Employee()
                 {
-                    Id = id,
-                    password = password,
-                    RoleId = 1
+                    FullName = fullname,
+                    Email = email,
+                    BirthDate = birthDate
                 };
-                myContext.Users.Add(user);
-                var resultUser = myContext.SaveChanges();
-                if (resultUser > 0)
-                    return RedirectToAction("Login", "Account");
+                myContext.Employees.Add(employee);
+                var result = myContext.SaveChanges();
+                if (result > 0)
+                {
+                    var id = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email)).Id;
+                    User user = new User()
+                    {
+                        Id = id,
+                        password = Hashing.HashPassword(password),
+                        RoleId = 1
+                    };
+                    myContext.Users.Add(user);
+                    var resultUser = myContext.SaveChanges();
+                    if (resultUser > 0)
+                        return RedirectToAction("Login", "Account");
+                }
             }
             return View();
         }
@@ -104,20 +109,21 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangePass(string email, string currentPass, string newPass, string confirmPass)
+        public IActionResult ChangePass(/*string email, */string currentPass, string newPass, string confirmPass)
         {
             if (confirmPass == newPass)
             {
                 var data = myContext.Users
                 .Include(x => x.Employee)
-                .SingleOrDefault(x => x.Employee.Email.Equals(email) && x.password.Equals(currentPass));
-                if (data != null)
+                .SingleOrDefault(x => x.Employee.Email.Equals(HttpContext.Session.GetString("Email")));                
+                var validate = Hashing.ValidatePassword(currentPass, data.password);
+                if (data != null && validate)
                 {
-                    data.password = newPass;
+                    data.password = Hashing.HashPassword(newPass);
                     myContext.Entry(data).State = EntityState.Modified;
                     var result = myContext.SaveChanges();
                     if (result > 0)
-                        return RedirectToAction("Login", "Account");
+                        return RedirectToAction("Index", "Home");
                 }
             }
             return View();
@@ -134,11 +140,11 @@ namespace WebApp.Controllers
         public IActionResult ForgotPass(string email)
         {
             var data = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email));
-
-            Employee employeeEmail = new Employee() { Email = data.Email };
-            if (data != null) 
-                return RedirectToAction("ResetPass", "Account", employeeEmail);            
-            
+            if (data != null)
+            {
+                Employee employeeEmail = new Employee() { Email = data.Email };
+                return RedirectToAction("ResetPass", "Account", employeeEmail);
+            }
             return View();
         }
 
@@ -158,7 +164,7 @@ namespace WebApp.Controllers
                 .SingleOrDefault(x => x.Employee.Email.Equals(email));
                 if (data != null)
                 {
-                    data.password = newPass;
+                    data.password = Hashing.HashPassword(newPass);
                     myContext.Entry(data).State = EntityState.Modified;
                     var result = myContext.SaveChanges();
                     if (result > 0)

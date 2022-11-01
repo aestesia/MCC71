@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Context;
 using WebApp.Models;
 using WebApp.ViewModels;
 
@@ -14,9 +15,9 @@ namespace WebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(ResponseLogin employee)
+        public IActionResult Index()
         {
-            return View(employee);
+            return View();
         }
 
         public IActionResult Privacy()

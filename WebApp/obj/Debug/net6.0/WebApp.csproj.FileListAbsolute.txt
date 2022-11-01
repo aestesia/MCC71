@@ -262,3 +262,4 @@ C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\refint\WebA
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\WebApp.pdb
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\WebApp.genruntimeconfig.cache
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\ref\WebApp.dll
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\bin\Debug\net6.0\BCrypt.Net-Core.dll
