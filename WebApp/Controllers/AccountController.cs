@@ -58,9 +58,8 @@ namespace WebApp.Controllers
                 Role = data.Role.Name
             };
             if (data != null) 
-            {
                 return RedirectToAction("Index", "Home", responseLogin);
-            }            
+            
             return View();
         }
 

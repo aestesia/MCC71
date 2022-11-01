@@ -21,18 +21,30 @@ namespace WebApp.Controllers
         {
             var data = (from dept in myContext.Departments
                         join div in myContext.Divisions on dept.DivisionId equals div.Id
-                        select new DepartmentViewModel() { Id = dept.Id, DepartmentName = dept.Name, DivisionName = div.Name }).ToList();            
+                        select new DepartmentViewModel() { Id = dept.Id, DepartmentName = dept.Name, DivisionName = div.Name }).ToList();
+
             return View(data);
         }
 
         //GET BY ID
         public IActionResult Details(int id)
         {
-            var data = (from dept in myContext.Departments
-                       join div in myContext.Divisions on dept.DivisionId equals div.Id
-                       where dept.Id == id
-                       select new DepartmentViewModel() { Id = dept.Id, DepartmentName = dept.Name, DivisionName = div.Name }).SingleOrDefault();
-            return View(data);
+            //var data = (from dept in myContext.Departments
+            //           join div in myContext.Divisions on dept.DivisionId equals div.Id
+            //           where dept.Id == id
+            //           select new DepartmentViewModel() { Id = dept.Id, DepartmentName = dept.Name, DivisionName = div.Name }).SingleOrDefault();
+            
+            var data = myContext.Departments
+                .Include(x => x.Division)
+                .SingleOrDefault();
+            DepartmentViewModel departmentViewModel = new DepartmentViewModel()
+            {
+                Id = data.Id,
+                DepartmentName = data.Name,
+                DivisionName = data.Division.Name
+            };
+
+            return View(departmentViewModel);
         }
 
         //INSERT - GET POST
@@ -52,7 +64,7 @@ namespace WebApp.Controllers
         {            
             var department = (from div in myContext.Divisions
                             where div.Name == departmentViewModel.DivisionName
-                            select new Department(){ Name = departmentViewModel.DepartmentName, DivisionId = div.Id}).SingleOrDefault();            
+                            select new Department(){ Name = departmentViewModel.DepartmentName, DivisionId = div.Id}).SingleOrDefault();
             myContext.Departments.Add(department);
             var result = myContext.SaveChanges();
             if (result > 0)
