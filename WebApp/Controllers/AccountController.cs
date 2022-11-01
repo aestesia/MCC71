@@ -74,31 +74,33 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Register(string fullname, string email, DateTime birthDate, string password)
         {
-            var checkEmail = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email)).Email;
-            if (checkEmail == null) {
-                Employee employee = new Employee()
+            var checkEmail = myContext.Employees.Any(x => x.Email.Equals(email));
+            if (checkEmail)
+                return View();
+
+            Employee employee = new Employee()
+            {
+                FullName = fullname,
+                Email = email,
+                BirthDate = birthDate
+            };
+            myContext.Employees.Add(employee);
+            var result = myContext.SaveChanges();
+            if (result > 0)
+            {
+                var id = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email)).Id;
+                User user = new User()
                 {
-                    FullName = fullname,
-                    Email = email,
-                    BirthDate = birthDate
+                    Id = id,
+                    password = Hashing.HashPassword(password),
+                    RoleId = 1
                 };
-                myContext.Employees.Add(employee);
-                var result = myContext.SaveChanges();
-                if (result > 0)
-                {
-                    var id = myContext.Employees.SingleOrDefault(x => x.Email.Equals(email)).Id;
-                    User user = new User()
-                    {
-                        Id = id,
-                        password = Hashing.HashPassword(password),
-                        RoleId = 1
-                    };
-                    myContext.Users.Add(user);
-                    var resultUser = myContext.SaveChanges();
-                    if (resultUser > 0)
-                        return RedirectToAction("Login", "Account");
-                }
+                myContext.Users.Add(user);
+                var resultUser = myContext.SaveChanges();
+                if (resultUser > 0)
+                    return RedirectToAction("Login", "Account");
             }
+            
             return View();
         }
 
