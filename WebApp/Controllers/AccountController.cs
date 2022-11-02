@@ -113,21 +113,22 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult ChangePass(/*string email, */string currentPass, string newPass, string confirmPass)
         {
-            if (confirmPass == newPass)
-            {
-                var data = myContext.Users
+            if (confirmPass != newPass)
+                return View();
+            
+            var data = myContext.Users
                 .Include(x => x.Employee)
                 .SingleOrDefault(x => x.Employee.Email.Equals(HttpContext.Session.GetString("Email")));                
                 var validate = Hashing.ValidatePassword(currentPass, data.password);
-                if (data != null && validate)
-                {
-                    data.password = Hashing.HashPassword(newPass);
-                    myContext.Entry(data).State = EntityState.Modified;
-                    var result = myContext.SaveChanges();
-                    if (result > 0)
-                        return RedirectToAction("Index", "Home");
-                }
+            if (data != null && validate)
+            {
+                data.password = Hashing.HashPassword(newPass);
+                myContext.Entry(data).State = EntityState.Modified;
+                var result = myContext.SaveChanges();
+                if (result > 0)
+                    return RedirectToAction("Index", "Home");
             }
+            
             return View();
         }
 
@@ -159,20 +160,21 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult ResetPass(string email, string newPass, string confirmPass)
         {
-            if (confirmPass == newPass)
-            {
-                var data = myContext.Users
+            if (confirmPass != newPass)
+                return View();
+            
+            var data = myContext.Users
                 .Include(x => x.Employee)
                 .SingleOrDefault(x => x.Employee.Email.Equals(email));
-                if (data != null)
-                {
-                    data.password = Hashing.HashPassword(newPass);
-                    myContext.Entry(data).State = EntityState.Modified;
-                    var result = myContext.SaveChanges();
-                    if (result > 0)
-                        return RedirectToAction("Login", "Account");
-                }
+            if (data != null)
+            {
+                data.password = Hashing.HashPassword(newPass);
+                myContext.Entry(data).State = EntityState.Modified;
+                var result = myContext.SaveChanges();
+                if (result > 0)
+                    return RedirectToAction("Login", "Account");
             }
+            
             return View();
         }
 
