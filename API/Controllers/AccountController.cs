@@ -28,7 +28,7 @@ namespace API.Controllers
                 ResponseLogin login = accountRepository.Login(email, password);
                 if (login == null)
                     return Ok(new { StatusCode = 200, Message = "Login Failed" });
-                return Ok(new { StatusCode = 200, Message = "Login Success", Data =  login});
+                return Ok(new { StatusCode = 200, Message = "Login Success", Data = login});
             }
             catch (Exception ex) 
             {
@@ -43,8 +43,10 @@ namespace API.Controllers
             try
             {
                 var result = accountRepository.Register(fullname, email, birthDate, password);
+                if(result == 2)
+                    return Ok(new { StatusCode = 200, Message = "Email is Already Used" });
                 if (result == 0)
-                    return Ok(new { Message = "Failed To Register" });
+                    return Ok(new { StatusCode = 200, Message = "Failed To Register" });
                 return Ok(new { StatusCode = 200, Message = "Register Success" });
             }
             catch (Exception ex)
@@ -60,8 +62,10 @@ namespace API.Controllers
             try
             {
                 var result = accountRepository.ChangePass(email, currentPass, newPass, confirmPass);
+                if (result == 2)
+                    return Ok(new { StatusCode = 200, Message = "Password and Confirm Password are Mismatch" });
                 if (result == 0)
-                    return Ok(new { Message = "Failed To Change Password" });
+                    return Ok(new { StatusCode = 200, Message = "Failed To Change Password" });
                 return Ok(new { StatusCode = 200, Message = "Change Password Success" });
             }
             catch (Exception ex)
@@ -75,10 +79,12 @@ namespace API.Controllers
         public IActionResult ForgotPass(string email, string newPass, string confirmPass)
         {
             try
-            {
+            {                
                 var result = accountRepository.ForgotPass(email, newPass, confirmPass);
+                if (result == 2)
+                    return Ok(new { StatusCode = 200, Message = "Password and Confirm Password are Mismatch" });
                 if (result == 0)
-                    return Ok(new { Message = "Failed To Reset Password" });
+                    return Ok(new { StatusCode = 200, Message = "Failed To Reset Password" });
                 return Ok(new { StatusCode = 200, Message = "Reset Password Success" });
             }
             catch (Exception ex)

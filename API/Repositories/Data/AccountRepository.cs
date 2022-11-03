@@ -41,7 +41,7 @@ namespace API.Repositories.Data
         {
             var checkEmail = myContext.Employees.Any(x => x.Email.Equals(email));
             if (checkEmail)
-                return 0;
+                return 2;
 
             Employee employee = new Employee()
             {
@@ -71,7 +71,7 @@ namespace API.Repositories.Data
         public int ChangePass(string email, string currentPass, string newPass, string confirmPass) 
         {
             if (confirmPass != newPass)
-                return 0;
+                return 2;
 
             var data = myContext.Users
                 .Include(x => x.Employee)
@@ -91,7 +91,7 @@ namespace API.Repositories.Data
         public int ForgotPass(string email, string newPass, string confirmPass) 
         {
             if (confirmPass != newPass)
-                return 0;
+                return 2;
 
             var data = myContext.Users
                 .Include(x => x.Employee)
