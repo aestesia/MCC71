@@ -17,46 +17,85 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult GetAll()
         {
-            var data = departmentRepository.GetAll();
-            return Ok(data);
+            try
+            {
+                var data = departmentRepository.GetAll();
+                if (data == null)
+                    return Ok(new { StatusCode = 200, Message = "Data Not Found" });
+
+                //return StatusCode(200, "Data Found");
+                return Ok(new { StatusCode = 200, Message = "Data Found", Data = data });
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(new { StatusCode = 400, Message = ex.Message });
+            }
         }
 
         [HttpGet("{id}")]
         public ActionResult GetById(int id)
         {
-            var data = departmentRepository.GetById(id);
-            if (data == null)
-                return Ok(new { Message = "Data not found" });
-            return Ok(data);
+            try
+            {
+                var data = departmentRepository.GetById(id);
+                if (data == null)
+                    return Ok(new { Message = "Data not found" });
+                return Ok(data);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(new { StatusCode = 400, Message = ex.Message });
+            }
         }
 
         [HttpPost]
         public ActionResult Create(Department department)
         {
-            var result = departmentRepository.Create(department);
-            if (result == 0)
-                return Ok(new { Message = "Failed to Create Data" });
-            return Ok(new { Message = "Insert Data Success" });
+            try
+            {
+                var result = departmentRepository.Create(department);
+                if (result == 0)
+                    return Ok(new { Message = "Failed to Create Data" });
+                return Ok(new { Message = "Insert Data Success" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { StatusCode = 400, Message = ex.Message });
+            }
         }
 
         [HttpPut]
         public ActionResult Update(Department department)
         {
-            var result = departmentRepository.Update(department);
-            if (result == 0)
-                return Ok(new { Message = "Failed to Update Data" });
-            return Ok(new { Message = "Update Data Success" });
+            try
+            {
+                var result = departmentRepository.Update(department);
+                if (result == 0)
+                    return Ok(new { Message = "Failed to Update Data" });
+                return Ok(new { Message = "Update Data Success" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { StatusCode = 400, Message = ex.Message });
+            }
         }
 
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            var result = departmentRepository.Delete(id);
-            if (result == 0)
-                return Ok(new { Message = "Failed to Delete Data" });
-            return Ok(new { Message = "Delete Data Success" });
+            try
+            {
+                var result = departmentRepository.Delete(id);
+                if (result == 0)
+                    return Ok(new { Message = "Failed to Delete Data" });
+                return Ok(new { Message = "Delete Data Success" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { StatusCode = 400, Message = ex.Message });
+            }
         }
     }
 }
