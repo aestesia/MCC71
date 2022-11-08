@@ -1,4 +1,6 @@
-﻿namespace API.Repositories.Interface
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace API.Repositories.Interface
 {
     public interface IRepository<Entity, Key> where Entity : class
     {

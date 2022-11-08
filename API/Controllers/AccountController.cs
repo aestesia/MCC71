@@ -6,6 +6,10 @@ using API.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace API.Controllers
 {
@@ -13,10 +17,12 @@ namespace API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        public IConfiguration configuration;
         private AccountRepository accountRepository;
 
-        public AccountController(AccountRepository accountRepository)
+        public AccountController(IConfiguration configuration, AccountRepository accountRepository)
         {
+            this.configuration = configuration;
             this.accountRepository = accountRepository;
         }
 
@@ -29,7 +35,28 @@ namespace API.Controllers
                 ResponseLogin login = accountRepository.Login(email, password);
                 if (login == null)
                     return Ok(new { StatusCode = 200, Message = "Login Failed" });
-                return Ok(new { StatusCode = 200, Message = "Login Success", Data = login});
+
+                //create claims details based on the user information
+                var claims = new[] {
+                        new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                        new Claim("Id", login.Id.ToString()),
+                        new Claim("FullName", login.FullName),
+                        new Claim("Email", login.Email),
+                        new Claim("role", login.Role)
+                    };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+                var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                var token = new JwtSecurityToken(
+                    configuration["Jwt:Issuer"],
+                    configuration["Jwt:Audience"],
+                    claims,
+                    expires: DateTime.UtcNow.AddMinutes(15),
+                    signingCredentials: signIn);
+
+                return Ok(new { StatusCode = 200, Message = "Login Success", Data = new JwtSecurityTokenHandler().WriteToken(token) });
             }
             catch (Exception ex) 
             {
@@ -58,6 +85,7 @@ namespace API.Controllers
 
         //CHANGE PASS
         [HttpPost("ChangePass")]
+        [Authorize]
         public IActionResult ChangePass(string email, string currentPass, string newPass, string confirmPass)
         {
             try

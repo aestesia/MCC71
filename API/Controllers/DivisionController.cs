@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
-{
-    [Authorize]
+{    
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class DivisionController : ControllerBase
     {
         private DivisionRepository divisionRepository;
@@ -24,7 +24,11 @@ namespace API.Controllers
             try
             {
                 var data = divisionRepository.GetAll();
-                return Ok(data);
+                if (data == null)
+                    return Ok(new { StatusCode = 200, Message = "Data Not Found" });
+
+                //return StatusCode(200, "Data Found");
+                return Ok(new { StatusCode = 200, Message = "Data Found", Data = data });
             }
             catch (Exception ex)
             {
@@ -39,8 +43,8 @@ namespace API.Controllers
             {
                 var data = divisionRepository.GetById(id);
                 if (data == null)
-                    return Ok(new { Message = "Data not found" });
-                return Ok(data);
+                    return Ok(new { StatusCode = 200, Message = "Data not found" });
+                return Ok(new { StatusCode = 200, Message = "Data found", Data = data});
             }
             catch (Exception ex)
             {
@@ -55,8 +59,8 @@ namespace API.Controllers
             {
                 var result = divisionRepository.Create(division);
                 if (result == 0)
-                    return Ok(new { Message = "Failed to Create Data" });
-                return Ok(new { Message = "Insert Data Success" });
+                    return Ok(new { StatusCode = 200, Message = "Failed to Create Data" });
+                return Ok(new { StatusCode = 200, Message = "Insert Data Success" });
             }
             catch (Exception ex)
             {
@@ -71,8 +75,8 @@ namespace API.Controllers
             {
                 var result = divisionRepository.Update(division);
                 if (result == 0)
-                    return Ok(new { Message = "Failed to Update Data" });
-                return Ok(new { Message = "Update Data Success" });
+                    return Ok(new { StatusCode = 200, Message = "Failed to Update Data" });
+                return Ok(new { StatusCode = 200, Message = "Update Data Success" });
             }
             catch (Exception ex)
             {
@@ -87,8 +91,8 @@ namespace API.Controllers
             {
                 var result = divisionRepository.Delete(id);
                 if (result == 0)
-                    return Ok(new { Message = "Failed to Delete Data" });
-                return Ok(new { Message = "Delete Data Success" });
+                    return Ok(new { StatusCode = 200, Message = "Failed to Delete Data" });
+                return Ok(new { StatusCode = 200, Message = "Delete Data Success" });
             }
             catch (Exception ex)
             {
