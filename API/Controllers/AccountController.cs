@@ -41,9 +41,9 @@ namespace API.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("Id", login.Id.ToString()),
-                        new Claim("FullName", login.FullName),
-                        new Claim("Email", login.Email),
+                        new Claim("id", login.Id.ToString()),
+                        new Claim("fullName", login.FullName),
+                        new Claim("email", login.Email),
                         new Claim("role", login.Role)
                     };
 
@@ -85,7 +85,6 @@ namespace API.Controllers
 
         //CHANGE PASS
         [HttpPost("ChangePass")]
-        [Authorize]
         public IActionResult ChangePass(string email, string currentPass, string newPass, string confirmPass)
         {
             try
