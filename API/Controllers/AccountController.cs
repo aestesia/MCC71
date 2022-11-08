@@ -3,6 +3,7 @@ using API.Handlers;
 using API.Models;
 using API.Repositories.Data;
 using API.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
