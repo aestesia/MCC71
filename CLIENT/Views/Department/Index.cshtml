@@ -1,0 +1,41 @@
+﻿@model IEnumerable<API.Models.Department>
+
+@{
+    ViewData["Title"] = "Department";
+}
+
+<h1>DEPARTMENT</h1>
+
+<p>
+    <a href="#">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionId)
+            </td>
+            <td>
+                <a href="#">Edit</a> |
+                <a href="#">Details</a> |
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
