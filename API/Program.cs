@@ -69,6 +69,7 @@ builder.Services.AddSwaggerGen(x =>
     });
 });
 
+//cors
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>

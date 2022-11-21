@@ -26,7 +26,7 @@
                 render: function (data, type, row, meta) {
                     return `
                         <button type="button" id="detailButton" class="btn btn-primary" onclick="detailDept('${data.id}')" data-toggle="modal" data-target="#detailModal">Edit</button> |
-                        <button type="button" id="deleteButton" class="btn btn btn-danger" data-toggle="modal" data-id="${data.id}" data-target="#deleteModal">Delete</button>`
+                        <button type="button" id="deleteButton" class="btn btn btn-danger" data-toggle="modal" data-id="${data.id}" data-target="#deleteDeptModal">Delete</button>`
                 }
             }
         ],
@@ -135,12 +135,12 @@ function editDept() {
 }
 
 //DELETE 
-$("#deleteModal").on('show.bs.modal', function (e) {
+$("#deleteDeptModal").on('show.bs.modal', function (e) {
     var triggerLink = $(e.relatedTarget);
     var id = triggerLink.data("id");
-    var tempButton = `<button type="button" onclick="deleteDept('${id}')" class="btn btn-primary">Delete</button>
+    var tempButtons = `<button type="button" onclick="deleteDept('${id}')" class="btn btn-primary">Delete</button>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>`
-    $(this).find(".modal-footer").html(tempButton);   
+    $(this).find(".modal-footer").html(tempButtons);   
 });
 
 function deleteDept(id) {
@@ -150,6 +150,7 @@ function deleteDept(id) {
         dataType: "json",
         success: function () {            
             alert("Data Has Been Deleted");
+            location.reload();
         }
     })    
 }

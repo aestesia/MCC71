@@ -25,7 +25,7 @@ $(document).ready(function () {
                 render: function (data, type, row, meta) {
                     return `
                         <button type="button" id="detailButton" class="btn btn-primary" onclick="detailDiv('${data.id}')" data-toggle="modal" data-target="#detailModal">Edit</button> |
-                        <button type="button" id="deleteButton" class="btn btn btn-danger" data-toggle="modal" data-id="${data.id}" data-target="#deleteModal">Delete</button>`
+                        <button type="button" id="deleteButton" class="btn btn btn-danger" data-toggle="modal" data-id="${data.id}" data-target="#deleteDivModal">Delete</button>`
                 }
             }
         ],
@@ -37,6 +37,8 @@ $(document).ready(function () {
                     $('#createDivModal').modal('show')
                 }
             },
+            'spacer',
+            'colvis',
             'spacer',
             {
                 extends: 'copy',
@@ -129,12 +131,12 @@ function editDiv() {
 
 
 //DELETE 
-$("#deleteModal").on('show.bs.modal', function (e) {
+$("#deleteDivModal").on('show.bs.modal', function (e) {
     var triggerLink = $(e.relatedTarget);
     var id = triggerLink.data("id");
-    var tempButton = `<button type="button" onclick="deleteDiv('${id}')" class="btn btn-primary">Delete</button>
+    var tempButtons = `<button type="button" onclick="deleteDiv('${id}')" class="btn btn-primary">Delete</button>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>`
-    $(this).find(".modal-footer").html(tempButton);
+    $(this).find(".modal-footer").html(tempButtons);
     /*$(this).find(".modal-body").html("<p>id: " + id + "</p>");*/
 });
 
@@ -145,6 +147,7 @@ function deleteDiv(id) {
         dataType: "json",
         success: function () {            
             alert("Data Has Been Deleted");
+            location.reload();
         }
     })    
 }
