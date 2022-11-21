@@ -13,10 +13,10 @@ namespace API.Repositories.Data
             this.myContext = myContext;
         }
 
-        public List<Division> Get(string name) 
-        {
-            return myContext.Divisions.Where(x => x.Name.Equals(name)).ToList();
-        }
+        //public List<Division> Get(string name)
+        //{
+        //    return myContext.Divisions.Where(x => x.Name.Equals(name)).ToList();
+        //}
 
         ////Get All
         //public IEnumerable<Division> GetAll() 

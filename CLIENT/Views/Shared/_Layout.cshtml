@@ -15,6 +15,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/lib/dist/css/adminlte.min.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/datatables.min.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -64,12 +68,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
                         <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Home
+                                </p>
+                            </a>               
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Privacy
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a asp-area="" asp-controller="Division" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Division
                                 </p>
                             </a>
+                        </li>
+                        <li class="nav-item">
                             <a asp-area="" asp-controller="Department" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -106,6 +128,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="~/lib/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="~/lib/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- JS Files -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/department.js"></script>
+    <script src="~/js/division.js"></script>
+    
     <!-- AdminLTE App -->
     <script src="~/lib/dist/js/adminlte.min.js"></script>
 </body>

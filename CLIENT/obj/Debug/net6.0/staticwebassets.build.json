@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xxYkmr1TJQHobTGvz0SsdeDtdcgtRXOsMjmV0Mk6ArA=",
+  "Hash": "MEZ5snzXk8C0dtilTcdpWosfY6x3hFcU4gry4pJBwJo=",
   "Source": "CLIENT",
   "BasePath": "_content/CLIENT",
   "Mode": "Default",
@@ -95,6 +95,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\department.js",
+      "SourceId": "CLIENT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\",
+      "BasePath": "_content/CLIENT",
+      "RelativePath": "js/department.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\department.js"
+    },
+    {
+      "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\division.js",
+      "SourceId": "CLIENT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\",
+      "BasePath": "_content/CLIENT",
+      "RelativePath": "js/division.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\division.js"
     },
     {
       "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\site.js",

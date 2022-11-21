@@ -19,21 +19,21 @@ namespace API.Controllers
             this.divisionRepository = divisionRepository;
         }
 
-        [HttpGet("{name}")]
-        public IActionResult Get(string name) 
-        {
-            try
-            {
-                var data = divisionRepository.Get(name);
-                if (data == null)
-                    return Ok(new { StatusCode = 200, Message = "Data not found" });
-                return Ok(new { StatusCode = 200, Message = "Data found", Data = data });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { StatusCode = 400, Message = ex.Message });
-            }
-        }
+        //[HttpGet("{name}")]
+        //public IActionResult Get(string name)
+        //{
+        //    try
+        //    {
+        //        var data = divisionRepository.Get(name);
+        //        if (data == null)
+        //            return Ok(new { StatusCode = 200, Message = "Data not found" });
+        //        return Ok(new { StatusCode = 200, Message = "Data found", Data = data });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(new { StatusCode = 400, Message = ex.Message });
+        //    }
+        //}
 
         //[HttpGet]
         //public ActionResult GetAll() 

@@ -1,35 +1,48 @@
-﻿@model IEnumerable<API.Models.Division>
-
-@{
+﻿@{
     ViewData["Title"] = "Division";
 }
 
 <h1>DIVISION</h1>
 
-<p>
-    <a href="#">Create New</a>
-</p>
-<table class="table">
+<table class="table" id="tableDivision">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
+        <tr>           
+            <th>No</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a href="#">Edit</a> |
-                <a href="#">Details</a> |
-                <a href="#">Delete</a>
-            </td>
-        </tr>
-}
     </tbody>
 </table>
+
+<!-- Modal -->
+
+<!-- Create Modal -->
+<div class="modal fade" id="createDivModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create New Division</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="createBody">
+                <form>
+                    <div class="form-group">
+                        <label for="divNameInput" class="col-form-label">Division Name:</label>
+                        <input type="text" class="form-control" id="divisionNameCreate" required>
+                    </div>                   
+                     <button type="submit" class="btn btn-primary" onclick="createDiv()">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Views/Shared/ModalActions.cshtml" />

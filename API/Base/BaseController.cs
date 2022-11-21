@@ -35,7 +35,7 @@ namespace API.Base
             }
         }
 
-            [HttpGet("{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetById(Key id) 
         {
             try
