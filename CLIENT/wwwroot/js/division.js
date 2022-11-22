@@ -75,8 +75,15 @@ function createDiv() {
         dataType: 'json',
         data: JSON.stringify(data),
         success: function () {
-            alert("Add Data Successfull");
-            location.reload();
+            //alert("Add Data Successfull");
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data has been added',
+                type: 'success'
+            }
+            ).then(function () {
+                location.reload();
+            });
         }
     })
 
@@ -93,11 +100,11 @@ function detailDiv(id) {
             `<form>
                 <div>
                     <label for="id">ID:</label><br>
-                    <input type="text" id="divId" value="${res.data.id}" readonly></input><br>
+                    <input type="text" class="form-control" id="divId" value="${res.data.id}" readonly></input><br>
                 </div>
                 <div>
                     <label for="name">Division Name:</label><br>
-                    <input type="text" id="divName" value="${res.data.name}"></input><br><br>
+                    <input type="text" class="form-control" id="divName" value="${res.data.name}" placeholder="Enter Division Name" required></input><br><br>
                 </div>
                 <button type="button" class="btn btn-primary" onclick="editDiv()">Edit</button>
             </form>`;
@@ -123,8 +130,16 @@ function editDiv() {
         dataType: 'json',
         data: JSON.stringify(data),
         success: function () {
-            alert("Edit Data Successfull");
-            location.reload();
+            //alert("Edit Data Successfull");
+            //location.reload();
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data has been edited',
+                type: 'success'
+            }
+            ).then(function () {
+                location.reload();
+            });
         }
     })
 }
@@ -146,8 +161,16 @@ function deleteDiv(id) {
         type: "DELETE",
         dataType: "json",
         success: function () {            
-            alert("Data Has Been Deleted");
-            location.reload();
+            //alert("Data Has Been Deleted");
+            //location.reload();
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data has been deleted',
+                type: 'success'
+            }
+            ).then(function () {
+                location.reload();
+            });
         }
     })    
 }

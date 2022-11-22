@@ -75,8 +75,16 @@ function createDept() {
         dataType: 'json',
         data: JSON.stringify(data),
         success: function () {
-            alert("Add Data Successfull");
-            location.reload();
+            //alert("Add Data Successfull");
+            //location.reload();
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data has been added',
+                type: 'success'
+            }
+            ).then(function () {
+                location.reload();
+            });
         }
     })
 }
@@ -91,20 +99,20 @@ function detailDept(id) {
     }).done((res) => {
         let tempDetail =
             `<form>
-            <div>
-                <label for="id">ID:</label><br>
-                <input type="text" id="deptId" value="${res.data.id}" readonly></input><br>
-            </div>
-            <div>
-                <label for="name">Department Name:</label><br>
-                <input type="text" id="deptName" value="${res.data.name}"></input><br>
-            </div>
-            <div>
-                <label for="name">Division ID:</label><br>
-                <input type="text" id="divId" value="${res.data.divisionId}"></input><br><br>
-            </div>
-            <button type="button" class="btn btn-primary" onclick="editDept()">Edit</button>
-        </form>`;
+                <div>
+                    <label for="id">ID:</label><br>
+                    <input type="text" class="form-control" id="deptId" value="${res.data.id}" readonly></input><br>
+                </div>
+                <div>
+                    <label for="name">Department Name:</label><br>
+                    <input type="text" class="form-control" id="deptName" value="${res.data.name} placeholder="Enter Department Name" required"></input><br>
+                </div>
+                <div>
+                    <label for="name">Division ID:</label><br>
+                    <input type="text" class="form-control" id="divId" value="${res.data.divisionId} placeholder="Enter Division ID" required"></input><br><br>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="editDept()">Edit</button>
+            </form>`;
         $("#detailBody").html(tempDetail);
     });
 }
@@ -128,8 +136,16 @@ function editDept() {
         dataType: 'json',
         data: JSON.stringify(data),
         success: function () {
-            alert("Edit Data Successfull");
-            location.reload();
+            //alert("Edit Data Successfull");
+            //location.reload();
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data has been edited',
+                type: 'success'
+            }
+            ).then(function () {
+                location.reload();
+            });
         }
     })
 }
@@ -149,8 +165,16 @@ function deleteDept(id) {
         type: "DELETE",
         dataType: "json",
         success: function () {            
-            alert("Data Has Been Deleted");
-            location.reload();
+            //alert("Data Has Been Deleted");
+            //location.reload();
+            Swal.fire({
+                title: 'Success!',
+                text: 'Data has been deleted',
+                type: 'success'
+            }
+            ).then(function () {
+                location.reload();
+            });
         }
     })    
 }
