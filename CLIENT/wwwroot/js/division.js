@@ -59,33 +59,54 @@ $(document).ready(function () {
 
 });
 
+//VALIDATION OF CREATE? kgk jalan...
+//$(document).ready(function () {
+//    $("#createDivForm").validate({
+//        rules: {
+//            divisionName: "required"
+//        },
+//        messages: {
+//            divisionName: "Please enter division name"
+//        }
+//    })
+
+//    $("#createDivBtn").click(function () {
+//        if ($("createDivForm").valid()) {
+//            createDiv();
+//        }
+//    })
+
+//});
+
 //CREATE
 function createDiv() {
+    if ($("#createDivForm").valid()) {
 
-    const divisionName = $("#divisionNameCreate").val();
+        const divisionName = $("#divisionName").val();
 
-    const data = {
-        name: divisionName
-    }
-    
-    $.ajax({
-        url: 'https://localhost:44393/api/Division',
-        type: 'POST',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: JSON.stringify(data),
-        success: function () {
-            //alert("Add Data Successfull");
-            Swal.fire({
-                title: 'Success!',
-                text: 'Data has been added',
-                type: 'success'
-            }
-            ).then(function () {
-                location.reload();
-            });
+        const data = {
+            name: divisionName
         }
-    })
+
+        $.ajax({
+            url: 'https://localhost:44393/api/Division',
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function () {
+                //alert("Add Data Successfull");
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Data has been added',
+                    type: 'success'
+                }
+                ).then(function () {
+                    location.reload();
+                });
+            }
+        })
+    }
 
 }
 
@@ -97,7 +118,7 @@ function detailDiv(id) {
         dataType: 'json'
     }).done((res) => {
         let tempDetail =
-            `<form>
+            `<form id="detailDivForm">
                 <div>
                     <label for="id">ID:</label><br>
                     <input type="text" class="form-control" id="divId" value="${res.data.id}" readonly></input><br>
@@ -113,35 +134,38 @@ function detailDiv(id) {
 }
 
 function editDiv() {
-    const divId = $("#divId").val();
-    const divName = $("#divName").val();
+    if ($("#detailDivForm").valid()) {
 
-    const data = {
-        id: divId,
-        name: divName
-    }
+        const divId = $("#divId").val();
+        const divName = $("#divName").val();
 
-    console.log(data);
-
-    $.ajax({
-        url: `https://localhost:44393/api/Division`,
-        type: "PUT",
-        contentType: 'application/json',
-        dataType: 'json',
-        data: JSON.stringify(data),
-        success: function () {
-            //alert("Edit Data Successfull");
-            //location.reload();
-            Swal.fire({
-                title: 'Success!',
-                text: 'Data has been edited',
-                type: 'success'
-            }
-            ).then(function () {
-                location.reload();
-            });
+        const data = {
+            id: divId,
+            name: divName
         }
-    })
+
+        console.log(data);
+
+        $.ajax({
+            url: `https://localhost:44393/api/Division`,
+            type: "PUT",
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function () {
+                //alert("Edit Data Successfull");
+                //location.reload();
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Data has been edited',
+                    type: 'success'
+                }
+                ).then(function () {
+                    location.reload();
+                });
+            }
+        })
+    }
 }
 
 

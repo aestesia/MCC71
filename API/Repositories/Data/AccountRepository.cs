@@ -37,7 +37,7 @@ namespace API.Repositories.Data
             return null;
         }
 
-        public int Register(string fullname, string email, DateTime birthDate, string password) 
+        public int Register(string fullname, string email, string gender, DateTime birthDate, string password) 
         {
             var checkEmail = myContext.Employees.Any(x => x.Email.Equals(email));
             if (checkEmail)
@@ -47,6 +47,7 @@ namespace API.Repositories.Data
             {
                 FullName = fullname,
                 Email = email,
+                Gender = gender,
                 BirthDate = birthDate
             };
             myContext.Employees.Add(employee);
@@ -68,11 +69,9 @@ namespace API.Repositories.Data
             return 0;
         }
 
-        public int ChangePass(string email, string currentPass, string newPass, string confirmPass) 
+        public int ChangePass(string email, string currentPass, string newPass) 
         {
-            if (confirmPass != newPass)
-                return 2;
-
+            
             var data = myContext.Users
                 .Include(x => x.Employee)
                 .SingleOrDefault(x => x.Employee.Email.Equals(email));
@@ -88,11 +87,8 @@ namespace API.Repositories.Data
             return 0;
         }
 
-        public int ForgotPass(string email, string newPass, string confirmPass) 
-        {
-            if (confirmPass != newPass)
-                return 2;
-
+        public int ForgotPass(string email, string newPass) 
+        {            
             var data = myContext.Users
                 .Include(x => x.Employee)
                 .SingleOrDefault(x => x.Employee.Email.Equals(email));

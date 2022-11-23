@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MEZ5snzXk8C0dtilTcdpWosfY6x3hFcU4gry4pJBwJo=",
+  "Hash": "BX/AnFr+AvphEW01IS0KSAW7lN8WKBnJyhHt0x6aHPM=",
   "Source": "CLIENT",
   "BasePath": "_content/CLIENT",
   "Mode": "Default",
@@ -129,6 +129,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\division.js"
+    },
+    {
+      "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\home.js",
+      "SourceId": "CLIENT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\",
+      "BasePath": "_content/CLIENT",
+      "RelativePath": "js/home.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\home.js"
     },
     {
       "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\site.js",
@@ -1489,6 +1506,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\dist\\img\\avatar5.png"
+    },
+    {
+      "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\lib\\dist\\img\\bg.jpg",
+      "SourceId": "CLIENT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\",
+      "BasePath": "_content/CLIENT",
+      "RelativePath": "lib/dist/img/bg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\dist\\img\\bg.jpg"
     },
     {
       "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\lib\\dist\\img\\boxed-bg.jpg",

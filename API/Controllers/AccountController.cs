@@ -66,11 +66,11 @@ namespace API.Controllers
 
         //REGISTER
         [HttpPost("Register")]
-        public IActionResult Register(string fullname, string email, DateTime birthDate, string password)
+        public IActionResult Register(string fullname, string email, string gender, DateTime birthDate, string password)
         {
             try
             {
-                var result = accountRepository.Register(fullname, email, birthDate, password);
+                var result = accountRepository.Register(fullname, email, gender, birthDate, password);
                 if(result == 2)
                     return Ok(new { StatusCode = 200, Message = "Email is Already Used" });
                 if (result == 0)
@@ -85,13 +85,11 @@ namespace API.Controllers
 
         //CHANGE PASS
         [HttpPost("ChangePass")]
-        public IActionResult ChangePass(string email, string currentPass, string newPass, string confirmPass)
+        public IActionResult ChangePass(string email, string currentPass, string newPass)
         {
             try
             {
-                var result = accountRepository.ChangePass(email, currentPass, newPass, confirmPass);
-                if (result == 2)
-                    return Ok(new { StatusCode = 200, Message = "Password and Confirm Password are Mismatch" });
+                var result = accountRepository.ChangePass(email, currentPass, newPass);                
                 if (result == 0)
                     return Ok(new { StatusCode = 200, Message = "Failed To Change Password" });
                 return Ok(new { StatusCode = 200, Message = "Change Password Success" });
@@ -104,13 +102,11 @@ namespace API.Controllers
 
         //FORGOT PASS
         [HttpPost("ForgotPass")]
-        public IActionResult ForgotPass(string email, string newPass, string confirmPass)
+        public IActionResult ForgotPass(string email, string newPass)
         {
             try
             {                
-                var result = accountRepository.ForgotPass(email, newPass, confirmPass);
-                if (result == 2)
-                    return Ok(new { StatusCode = 200, Message = "Password and Confirm Password are Mismatch" });
+                var result = accountRepository.ForgotPass(email, newPass);                
                 if (result == 0)
                     return Ok(new { StatusCode = 200, Message = "Failed To Reset Password" });
                 return Ok(new { StatusCode = 200, Message = "Reset Password Success" });

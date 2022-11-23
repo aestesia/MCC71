@@ -29,13 +29,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="createBody">
-                <form>
+            <div class="modal-body" id="createBody">                
+                <form id="createDivForm">
                     <div class="form-group">
-                        <label for="divNameInput" class="col-form-label">Division Name:</label>
-                        <input type="text" class="form-control" id="divisionNameCreate" placeholder="Enter Division Name" required>
-                    </div>                   
-                     <button type="button" class="btn btn-primary" onclick="createDiv()">Submit</button>
+                        <label for="divisionName" class="col-form-label">Division Name:</label>
+                        <input type="text" class="form-control" id="divisionName" placeholder="Enter Division Name" required>                        
+                    </div>               
+                    <button type="button" class="btn btn-primary" id="createDivBtn" onclick="createDiv()">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -62,4 +62,4 @@
     </div>
 </div>
 
-<partial name="~/Views/Shared/ModalActions.cshtml" />
+<partial name="~/Views/Shared/_ModalLayout.cshtml" />
