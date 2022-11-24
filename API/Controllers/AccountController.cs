@@ -1,6 +1,4 @@
-﻿using API.Context;
-using API.Handlers;
-using API.Models;
+﻿using API.Handlers;
 using API.Repositories.Data;
 using API.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -17,13 +15,15 @@ namespace API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        public IConfiguration configuration;
+        //public IConfiguration configuration;
+        private JWTConfig jwtConfig;
         private AccountRepository accountRepository;
 
-        public AccountController(IConfiguration configuration, AccountRepository accountRepository)
+        public AccountController(/*IConfiguration configuration,*/ JWTConfig jwtConfig, AccountRepository accountRepository)
         {
-            this.configuration = configuration;
+            //this.configuration = configuration;
             this.accountRepository = accountRepository;
+            this.jwtConfig = jwtConfig;
         }
 
         //LOGIN
@@ -37,26 +37,29 @@ namespace API.Controllers
                     return Ok(new { StatusCode = 200, Message = "Login Failed" });
 
                 //create claims details based on the user information
-                var claims = new[] {
-                        new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("id", login.Id.ToString()),
-                        new Claim("fullName", login.FullName),
-                        new Claim("email", login.Email),
-                        new Claim("role", login.Role)
-                    };
+                //var claims = new[] {
+                //        new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),
+                //        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                //        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                //        new Claim("id", login.Id.ToString()),
+                //        new Claim("fullName", login.FullName),
+                //        new Claim("email", login.Email),
+                //        new Claim("role", login.Role)
+                //    };
 
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-                var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var token = new JwtSecurityToken(
-                    configuration["Jwt:Issuer"],
-                    configuration["Jwt:Audience"],
-                    claims,
-                    expires: DateTime.UtcNow.AddMinutes(15),
-                    signingCredentials: signIn);
+                //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+                //var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                //var token = new JwtSecurityToken(
+                //    configuration["Jwt:Issuer"],
+                //    configuration["Jwt:Audience"],
+                //    claims,
+                //    expires: DateTime.UtcNow.AddMinutes(15),
+                //    signingCredentials: signIn);
 
-                return Ok(new { StatusCode = 200, Message = "Login Success", Data = new JwtSecurityTokenHandler().WriteToken(token) });
+                //return Ok(new { StatusCode = 200, Message = "Login Success", Data = new JwtSecurityTokenHandler().WriteToken(token) })
+
+                string token = jwtConfig.Token(login.Id, login.FullName, login.Email, login.Role);
+                return Ok(new { StatusCode = 200, Message = "Login Success", Data = login, token });
             }
             catch (Exception ex) 
             {
@@ -84,7 +87,7 @@ namespace API.Controllers
         }
 
         //CHANGE PASS
-        [HttpPost("ChangePass")]
+        [HttpPut("ChangePass")]
         public IActionResult ChangePass(string email, string currentPass, string newPass)
         {
             try
@@ -101,7 +104,7 @@ namespace API.Controllers
         }
 
         //FORGOT PASS
-        [HttpPost("ForgotPass")]
+        [HttpPut("ForgotPass")]
         public IActionResult ForgotPass(string email, string newPass)
         {
             try

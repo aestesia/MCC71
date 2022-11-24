@@ -13,16 +13,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\account.js",
+      "PackagePath": "staticwebassets\\js\\account.js"
+    },
+    {
+      "Id": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\js\\dashboard.js"
+    },
+    {
       "Id": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\department.js",
       "PackagePath": "staticwebassets\\js\\department.js"
     },
     {
       "Id": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\division.js",
       "PackagePath": "staticwebassets\\js\\division.js"
-    },
-    {
-      "Id": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\home.js",
-      "PackagePath": "staticwebassets\\js\\home.js"
     },
     {
       "Id": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\site.js",

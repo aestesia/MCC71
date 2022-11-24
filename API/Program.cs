@@ -1,4 +1,5 @@
 using API.Context;
+using API.Handlers;
 using API.Models;
 using API.Repositories.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,6 +19,8 @@ builder.Services.AddScoped<AccountRepository>(); //scope, transient , singleton
 
 builder.Services.AddDbContext<MyContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
 builder.Services.AddControllers();
+
+builder.Services.AddTransient<JWTConfig>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

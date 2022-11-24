@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BX/AnFr+AvphEW01IS0KSAW7lN8WKBnJyhHt0x6aHPM=",
+  "Hash": "l2RM/rFSVLcp9hcGu8SG4yVlY3TMpDcXlEAAxb1kU4A=",
   "Source": "CLIENT",
   "BasePath": "_content/CLIENT",
   "Mode": "Default",
@@ -97,6 +97,40 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\account.js",
+      "SourceId": "CLIENT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\",
+      "BasePath": "_content/CLIENT",
+      "RelativePath": "js/account.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\account.js"
+    },
+    {
+      "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\dashboard.js",
+      "SourceId": "CLIENT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\",
+      "BasePath": "_content/CLIENT",
+      "RelativePath": "js/dashboard.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\dashboard.js"
+    },
+    {
       "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\department.js",
       "SourceId": "CLIENT",
       "SourceType": "Discovered",
@@ -129,23 +163,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\division.js"
-    },
-    {
-      "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\home.js",
-      "SourceId": "CLIENT",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\",
-      "BasePath": "_content/CLIENT",
-      "RelativePath": "js/home.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\home.js"
     },
     {
       "Identity": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\CLIENT\\wwwroot\\js\\site.js",
