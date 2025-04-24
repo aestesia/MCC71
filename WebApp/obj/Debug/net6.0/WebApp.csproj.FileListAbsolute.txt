@@ -256,7 +256,6 @@ C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebas
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\scopedcss\bundle\WebApp.styles.css
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\scopedcss\projectbundle\WebApp.bundle.scp.css
-C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\WebApp.csproj.CopyComplete
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\WebApp.dll
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\refint\WebApp.dll
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\WebApp.pdb
@@ -268,3 +267,9 @@ C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebas
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebApp.props
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebApp.props
 C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\bin\Debug\net6.0\WebApp.staticwebassets.endpoints.json
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\WebApp.sourcelink.json
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebassets\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\WebApp\obj\Debug\net6.0\WebApp.csproj.Up2Date

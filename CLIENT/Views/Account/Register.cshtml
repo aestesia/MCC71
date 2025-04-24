@@ -1,9 +1,9 @@
-﻿
-@{
+﻿@{
+    Layout = "_LoginLayout";
     ViewData["Title"] = "Register";
 }
 
-<h1>Register</h1>
+@*<h1>Register</h1>*@
 @*<form method="post" asp-action="Register">
     <div>
     <label>Full Name</label>
@@ -24,92 +24,87 @@
     <button type="submit">Submit</button>
 </form>*@
 
+<div class="card-body login-card-body">
+    <p class="login-box-msg">Register Account</p>
 
-<form class="needs-validation" novalidate>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="validationName">Full Name</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                </div>
+    <form class="needs-validation" novalidate>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="validationName">Full Name</label>
                 <input type="text" class="form-control" id="validationName" placeholder="Full name" required>
                 <div class="invalid-feedback">
                     Please enter your name
                 </div>
             </div>
-        </div>        
-        <div class="col-md-4 mb-3">
-            <label for="validationEmail">Email</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                </div>
-                <input type="text" class="form-control" id="validationEmail" placeholder="Email" aria-describedby="inputGroupPrepend" required>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="validationEmail">Email</label>
+                <input type="text" class="form-control" id="validationEmail" placeholder="Email" required>
                 <div class="invalid-feedback">
                     Please enter your email.
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="validationCustomUsername">Birth Date</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                </div>
-                <input type="date" class="form-control" id="validationCustomBirthdate" placeholder="Email" aria-describedby="inputGroupPrepend" required>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="validationCustomUsername">Birth Date</label>
+                <input type="date" class="form-control" id="validationCustomBirthdate" placeholder="Email" required>
                 <div class="invalid-feedback">
                     Please choose birthdate.
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom01">Password</label>
-            <input type="password" class="form-control" id="validationPassword" placeholder="Password" required>
-            <div class="invalid-feedback">
-                Please enter your password
-            </div>
-        </div>        
-        <div class="col-md-4 mb-3">
-            <label for="validationCustom01">Password</label>
-            <input type="password" class="form-control" id="validationConfirmPassword" placeholder="Password" required>
-            <div class="invalid-feedback">
-                Please enter your password
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="validationCustom01">Password</label>
+                <input type="password" class="form-control" id="validationPassword" placeholder="Password" required>
+                <div class="invalid-feedback">
+                    Please enter your password
+                </div>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-                Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">
-                You must agree before submitting.
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="validationCustom01">Password</label>
+                <input type="password" class="form-control" id="validationConfirmPassword" placeholder="Password" required>
+                <div class="invalid-feedback">
+                    Please enter your password
+                </div>
             </div>
         </div>
-    </div>
-    <button class="btn btn-primary" type="submit" asp-controller="Home" asp-action="Index">Submit form</button>
-</form>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">
+                    You must agree before submitting.
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" asp-controller="Home" asp-action="Index">Submit form</button>
+    </form>
 
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</div>
