@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApp.Base;
 
 namespace WebApp.Models
 {
-    public class Department
+    public class Department : BaseModel
     {
         public Department(int Id, string Name, int DivisionId)
         {

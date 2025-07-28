@@ -1,0 +1,1 @@
+C:\Users\timot\Documents\Metrodata\MCC\MCC71\API\obj\Debug\net6.0\staticwebassets.build.json

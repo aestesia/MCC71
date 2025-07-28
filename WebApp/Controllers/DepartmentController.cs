@@ -65,6 +65,8 @@ namespace WebApp.Controllers
             var department = (from div in myContext.Divisions
                             where div.Name == departmentViewModel.DivisionName
                             select new Department(){ Name = departmentViewModel.DepartmentName, DivisionId = div.Id}).SingleOrDefault();
+            department.CreatedBy = HttpContext.Session.GetString("Fullname");
+            department.CreateDate = DateTime.Now.ToLocalTime();
             myContext.Departments.Add(department);
             var result = myContext.SaveChanges();
             if (result > 0)

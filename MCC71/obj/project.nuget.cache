@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1yD+nA21VX0=",
+  "dgSpecHash": "KLjvY2CTnXY=",
   "success": true,
   "projectFilePath": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\MCC71\\MCC71.csproj",
   "expectedPackageFiles": [
@@ -18,8 +18,10 @@
     {
       "code": "NU1902",
       "level": "Warning",
-      "warningLevel": 1,
       "message": "Package 'System.Data.SqlClient' 4.8.4 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-8g2p-5pqh-5jmc",
+      "projectPath": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\MCC71\\MCC71.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\MCC71\\MCC71.csproj",
       "libraryId": "System.Data.SqlClient",
       "targetGraphs": [
         "net6.0"
@@ -28,8 +30,10 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "warningLevel": 1,
       "message": "Package 'System.Data.SqlClient' 4.8.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-98g6-xh36-x2p7",
+      "projectPath": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\MCC71\\MCC71.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\timot\\Documents\\Metrodata\\MCC\\MCC71\\MCC71\\MCC71.csproj",
       "libraryId": "System.Data.SqlClient",
       "targetGraphs": [
         "net6.0"

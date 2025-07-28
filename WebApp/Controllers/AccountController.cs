@@ -93,7 +93,7 @@ namespace WebApp.Controllers
                 {
                     Id = id,
                     password = Hashing.HashPassword(password),
-                    RoleId = 1
+                    RoleId = 1 //User
                 };
                 myContext.Users.Add(user);
                 var resultUser = myContext.SaveChanges();
