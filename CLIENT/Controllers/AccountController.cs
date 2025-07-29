@@ -5,7 +5,7 @@ namespace CLIENT.Controllers
     public class AccountController : Controller
     {
         //Login
-        public IActionResult Login() 
+        public IActionResult Login()
         {
             return View();
         }

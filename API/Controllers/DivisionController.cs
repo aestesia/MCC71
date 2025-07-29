@@ -9,7 +9,7 @@ namespace API.Controllers
 {    
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class DivisionController : BaseController<DivisionRepository, Division, int>
     {
         private DivisionRepository divisionRepository;
