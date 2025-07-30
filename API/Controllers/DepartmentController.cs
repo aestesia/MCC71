@@ -1,6 +1,7 @@
 ﻿using API.Base;
 using API.Models;
 using API.Repositories.Data;
+using API.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,13 +46,30 @@ namespace API.Controllers
         //        var data = departmentRepository.GetById(id);
         //        if (data == null)
         //            return Ok(new { StatusCode = 200, Message = "Data not found" });
-        //        return Ok(new { StatusCode = 200, Message = "Data not found" , Data = data});
+        //        return Ok(new { StatusCode = 200, Message = "Data not found", Data = data });
         //    }
-        //    catch (Exception ex) 
+        //    catch (Exception ex)
         //    {
         //        return BadRequest(new { StatusCode = 400, Message = ex.Message });
         //    }
         //}
+
+        [HttpGet("{id}")]
+        public override IActionResult GetById(int id)
+        {
+            try
+            {
+                var data = departmentRepository.GetById(id);
+                if (data == null)
+                    return Ok(new ApiResponse<DepartmentViewModel>{ StatusCode = 200, Message = "Data not found" });
+                return Ok(new ApiResponse<DepartmentViewModel> { StatusCode = 200, Message = "Data found", Data = data });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiResponse<string> { StatusCode = 400, Message = ex.Message });
+            }
+        }
+
 
         //[HttpPost]
         //public ActionResult Create(Department department)

@@ -1,6 +1,7 @@
 ﻿using API.Context;
 using API.Models;
 using API.Repositories.Interface;
+using API.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Repositories.Data
@@ -41,6 +42,26 @@ namespace API.Repositories.Data
         //{
         //    return myContext.Departments.Find(id);
         //}
+
+        public DepartmentViewModel GetById(int id)
+        {
+           var data = myContext.Departments
+                .Include(x => x.Division)
+                .SingleOrDefault(x => x.Id == id);
+
+            if (data == null)
+                return null;
+            
+            DepartmentViewModel departmentViewModel = new DepartmentViewModel()
+            {
+                Id = data.Id,
+                DepartmentName = data.Name,
+                DivisionName = data.Division != null ? data.Division.Name : "Unknown"
+            };
+
+            return departmentViewModel;
+                        
+        }
 
         //public int Update(Department Entity)
         //{
