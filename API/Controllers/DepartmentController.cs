@@ -61,12 +61,12 @@ namespace API.Controllers
             {
                 var data = departmentRepository.GetById(id);
                 if (data == null)
-                    return Ok(new ApiResponse<DepartmentViewModel>{ StatusCode = 200, Message = "Data not found" });
-                return Ok(new ApiResponse<DepartmentViewModel> { StatusCode = 200, Message = "Data found", Data = data });
+                    return Ok(new { StatusCode = 200, Message = "Data not found" });
+                return Ok(new { StatusCode = 200, Message = "Data found", Data = data });
             }
             catch (Exception ex)
             {
-                return BadRequest(new ApiResponse<string> { StatusCode = 400, Message = ex.Message });
+                return BadRequest(new { StatusCode = 400, Message = ex.Message });
             }
         }
 
